@@ -35,7 +35,7 @@ public class PterodactylMove : MonoBehaviour
         }
         if (Time.time > attackTime)
         {
-            GameObject.Instantiate(weapon, transform.position, transform.rotation);
+            GameObject.Instantiate(weapon, new Vector3(transform.position.x,transform.position.y-1,0), transform.rotation);
             attackTime = Time.time + attackDelay + Random.Range(-1f, 1f);
 
         }
