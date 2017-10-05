@@ -28,7 +28,6 @@ public class MissileMove : MonoBehaviour
 
     void OnCollisionEnter2D()
     {
-        Debug.Log("hit");
         transform.GetChild(1).gameObject.SetActive(true);
         speed = 0;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;

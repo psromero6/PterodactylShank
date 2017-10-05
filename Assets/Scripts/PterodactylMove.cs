@@ -12,6 +12,7 @@ public class PterodactylMove : MonoBehaviour
     GameManager gameManager;
     bool death;
     float attackTime;
+
     void Start()
     {
         gameManager = GameObject.FindObjectOfType<GameManager>();
@@ -20,10 +21,12 @@ public class PterodactylMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(speed, 0, 0);
+        transform.Translate(speed*gameManager.timeScale, 0, 0);
+        attackTime += Time.deltaTime*gameManager.timeScale;
         if (death)
         {
             gameManager.ScoreIncrease(scoreValue);
+            gameManager.Die();
             GameObject.Instantiate(postKillItem, transform.position, new Quaternion(0, 0, 0, 0));
             GameObject.Destroy(transform.gameObject);
 
@@ -33,10 +36,10 @@ public class PterodactylMove : MonoBehaviour
 
             GameObject.Destroy(transform.gameObject);
         }
-        if (Time.time > attackTime)
+        if (attackTime>=attackDelay)
         {
             GameObject.Instantiate(weapon, new Vector3(transform.position.x,transform.position.y-1,0), transform.rotation);
-            attackTime = Time.time + attackDelay + Random.Range(-1f, 1f);
+            attackTime = Random.Range(-1f, 1f);
 
         }
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour {
     public GameManager gameManager;
+
 	// Use this for initialization
 	void Start () {
 		
