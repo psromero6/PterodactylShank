@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGamePlayOnDelay()
     {
-        StartCoroutine(_launchGamePlayAfterDelay(0.6f));
+        StartCoroutine(_launchGamePlayAfterDelay(0.8f));
     }
 
     private IEnumerator _launchGamePlayAfterDelay(float time)
